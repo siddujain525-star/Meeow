@@ -1,6 +1,12 @@
 import tkinter as tk
 import math, time, threading, random, os
 from pynput import mouse, keyboard
+try:
+    import pystray
+    from PIL import Image, ImageDraw
+    TRAY_AVAILABLE = True
+except ImportError:
+    TRAY_AVAILABLE = False
 
 # ── State ──────────────────────────────────────────────────────────────────
 mouse_x, mouse_y   = 0, 0
@@ -31,7 +37,7 @@ hearts = []   # [{x, y, born, size, screen}]
 heart_fullscreen = False  # True for 2s after heavy scratch
 
 # ── Wander ────────────────────────────────────────────────────────────────
-WANDER_EVERY = 30*60   # move to new spot every 30 min
+WANDER_EVERY = 30 * 60   # move to new spot every 30 min
 wander_target_x = None
 wander_target_y = None
 wandering = False
@@ -213,6 +219,25 @@ def show_toast(title, message):
              font=("Arial",9)).pack(anchor="w",padx=12)
     toast.after(4000,toast.destroy)
     toast.mainloop()
+
+# ── Tray icon ─────────────────────────────────────────────────────────────
+def make_tray_icon_image():
+    """Draw a tiny cat face as the tray icon."""
+    img = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    # Body circle
+    d.ellipse([8, 20, 56, 58], fill=(255, 200, 120), outline=(100, 60, 10), width=2)
+    # Ears
+    d.polygon([(12,24),(8,8),(22,18)], fill=(255,200,120), outline=(100,60,10))
+    d.polygon([(52,24),(56,8),(42,18)], fill=(255,200,120), outline=(100,60,10))
+    # Eyes
+    d.ellipse([18,28,30,40], fill="white", outline=(100,60,10), width=1)
+    d.ellipse([34,28,46,40], fill="white", outline=(100,60,10), width=1)
+    d.ellipse([22,31,28,37], fill=(30,20,10))
+    d.ellipse([36,31,42,37], fill=(30,20,10))
+    # Nose
+    d.polygon([(30,43),(34,43),(32,46)], fill=(255,160,180))
+    return img
 
 # ── Main ──────────────────────────────────────────────────────────────────
 def main():
@@ -488,6 +513,47 @@ def main():
         type_timer.daemon = True
         type_timer.start()
     keyboard.Listener(on_press=on_key,daemon=True).start()
+
+    # ── System tray icon ──────────────────────────────────────
+    if TRAY_AVAILABLE:
+        def on_tray_quit(icon, item):
+            icon.stop()
+            root.destroy()
+
+        def on_tray_show(icon, item):
+            root.deiconify()
+            root.lift()
+
+        def on_tray_pomodoro(icon, item):
+            global pomodoro_active, pomodoro_start, pomodoro_phase
+            if pomodoro_active:
+                pomodoro_active = False
+                threading.Thread(target=show_toast,
+                    args=("Pomodoro stopped","Timer cancelled."),daemon=True).start()
+            else:
+                pomodoro_active = True
+                pomodoro_start = time.time()
+                pomodoro_phase = "work"
+                threading.Thread(target=show_toast,
+                    args=("Pomodoro started!","25 min focus session."),daemon=True).start()
+
+        tray_menu = pystray.Menu(
+            pystray.MenuItem("🐱 Meeow", None, enabled=False),
+            pystray.Menu.SEPARATOR,
+            pystray.MenuItem("Show Cat", on_tray_show),
+            pystray.MenuItem("Toggle Pomodoro", on_tray_pomodoro),
+            pystray.Menu.SEPARATOR,
+            pystray.MenuItem("Quit", on_tray_quit),
+        )
+
+        tray_icon = pystray.Icon(
+            "Meeow",
+            make_tray_icon_image(),
+            "Meeow 🐱",
+            tray_menu
+        )
+
+        threading.Thread(target=tray_icon.run, daemon=True).start()
 
     root.mainloop()
 
