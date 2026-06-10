@@ -2,7 +2,7 @@
 <div align="center">
   <img src="meeow_cat.svg" alt="Meeow floating cat" width="500"/>
 </div>
-# 🐱 Meeow
+ 🐱 Meeow
 
 ### *A desktop cat companion that lives on your screen*
 
