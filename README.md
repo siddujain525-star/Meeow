@@ -1,15 +1,7 @@
+
 <div align="center">
-
-```
-    /\_____/\
-   /  o   o  \
-  ( ==  ^  == )
-   )         (
-  (           )
- ( (  )   (  ) )
-(__(__)___(__)__)
-```
-
+  <img src="meeow_cat.svg" alt="Meeow floating cat" width="500"/>
+</div>
 # 🐱 Meeow
 
 ### *A desktop cat companion that lives on your screen*
