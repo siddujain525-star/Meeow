@@ -1,0 +1,137 @@
+<svg width="100%" viewBox="0 0 680 420" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Meeow — A floating animated cat mascot for the README</title>
+  <desc>An animated cat that bobs up and down, blinks, and has a swishing tail.</desc>
+
+  <defs>
+    <style>
+      .cat-body { animation: float 3s ease-in-out infinite; }
+      .tail { animation: float 3s ease-in-out infinite, wag 1.5s ease-in-out infinite alternate; transform-origin: 370px 295px; }
+      .eye-l, .eye-r { animation: blink 4s ease-in-out infinite; }
+      .sparkle { animation: twinkle 2s ease-in-out infinite; }
+      .sparkle2 { animation: twinkle 2s ease-in-out infinite 0.7s; }
+      .sparkle3 { animation: twinkle 2s ease-in-out infinite 1.4s; }
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-12px); }
+      }
+      @keyframes wag {
+        0% { transform: rotate(-15deg) translateY(0px); }
+        100% { transform: rotate(18deg) translateY(-12px); }
+      }
+      @keyframes blink {
+        0%, 90%, 100% { transform: scaleY(1); }
+        95% { transform: scaleY(0.08); }
+      }
+      @keyframes twinkle {
+        0%, 100% { opacity: 0.2; transform: scale(0.7); }
+        50% { opacity: 1; transform: scale(1.2); }
+      }
+    </style>
+  </defs>
+
+  <!-- Background paw prints (decorative) -->
+  <g opacity="0.07">
+    <ellipse cx="80" cy="60" rx="14" ry="12" fill="#888"/>
+    <ellipse cx="68" cy="46" rx="7" ry="6" fill="#888"/>
+    <ellipse cx="83" cy="42" rx="7" ry="6" fill="#888"/>
+    <ellipse cx="96" cy="46" rx="7" ry="6" fill="#888"/>
+    <ellipse cx="590" cy="340" rx="14" ry="12" fill="#888"/>
+    <ellipse cx="578" cy="326" rx="7" ry="6" fill="#888"/>
+    <ellipse cx="593" cy="322" rx="7" ry="6" fill="#888"/>
+    <ellipse cx="606" cy="326" rx="7" ry="6" fill="#888"/>
+    <ellipse cx="120" cy="370" rx="11" ry="9" fill="#888"/>
+    <ellipse cx="111" cy="359" rx="5.5" ry="5" fill="#888"/>
+    <ellipse cx="122" cy="356" rx="5.5" ry="5" fill="#888"/>
+    <ellipse cx="133" cy="359" rx="5.5" ry="5" fill="#888"/>
+  </g>
+
+  <!-- Sparkles -->
+  <g class="sparkle">
+    <text x="120" y="200" font-size="22" text-anchor="middle" fill="#FAC775">✦</text>
+  </g>
+  <g class="sparkle2">
+    <text x="560" y="170" font-size="18" text-anchor="middle" fill="#9FE1CB">✦</text>
+  </g>
+  <g class="sparkle3">
+    <text x="490" y="340" font-size="14" text-anchor="middle" fill="#F4C0D1">✦</text>
+  </g>
+
+  <!-- Shadow -->
+  <g class="cat-body">
+    <ellipse cx="340" cy="345" rx="60" ry="8" fill="#000" opacity="0.06"/>
+  </g>
+
+  <!-- TAIL -->
+  <g class="tail">
+    <path d="M 370 295 Q 430 310 445 270 Q 460 230 420 220 Q 400 215 408 235 Q 415 250 400 258 Q 385 266 375 285" fill="none" stroke="#AFA9EC" stroke-width="14" stroke-linecap="round"/>
+    <path d="M 370 295 Q 430 310 445 270 Q 460 230 420 220 Q 400 215 408 235 Q 415 250 400 258 Q 385 266 375 285" fill="none" stroke="#EEEDFE" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+  </g>
+
+  <!-- CAT BODY GROUP -->
+  <g class="cat-body">
+
+    <!-- Body -->
+    <ellipse cx="340" cy="295" rx="72" ry="60" fill="#CECBF6"/>
+    <!-- Belly -->
+    <ellipse cx="340" cy="305" rx="40" ry="38" fill="#EEEDFE"/>
+
+    <!-- Front paws -->
+    <ellipse cx="302" cy="335" rx="22" ry="14" fill="#CECBF6"/>
+    <ellipse cx="378" cy="335" rx="22" ry="14" fill="#CECBF6"/>
+    <!-- Paw toe lines -->
+    <line x1="295" y1="338" x2="295" y2="345" stroke="#AFA9EC" stroke-width="2" stroke-linecap="round"/>
+    <line x1="303" y1="340" x2="303" y2="347" stroke="#AFA9EC" stroke-width="2" stroke-linecap="round"/>
+    <line x1="311" y1="338" x2="311" y2="345" stroke="#AFA9EC" stroke-width="2" stroke-linecap="round"/>
+    <line x1="371" y1="338" x2="371" y2="345" stroke="#AFA9EC" stroke-width="2" stroke-linecap="round"/>
+    <line x1="379" y1="340" x2="379" y2="347" stroke="#AFA9EC" stroke-width="2" stroke-linecap="round"/>
+    <line x1="387" y1="338" x2="387" y2="345" stroke="#AFA9EC" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Head -->
+    <circle cx="340" cy="230" r="62" fill="#CECBF6"/>
+
+    <!-- Ears -->
+    <polygon points="290,188 270,148 316,178" fill="#CECBF6"/>
+    <polygon points="390,188 410,148 364,178" fill="#CECBF6"/>
+    <!-- Inner ears -->
+    <polygon points="290,185 276,158 311,178" fill="#F4C0D1"/>
+    <polygon points="390,185 404,158 369,178" fill="#F4C0D1"/>
+
+    <!-- Eyes -->
+    <g class="eye-l" style="transform-origin: 316px 228px;">
+      <circle cx="316" cy="228" r="14" fill="white"/>
+      <circle cx="318" cy="228" r="8" fill="#3C3489"/>
+      <circle cx="321" cy="224" r="3" fill="white" opacity="0.85"/>
+    </g>
+    <g class="eye-r" style="transform-origin: 364px 228px;">
+      <circle cx="364" cy="228" r="14" fill="white"/>
+      <circle cx="366" cy="228" r="8" fill="#3C3489"/>
+      <circle cx="369" cy="224" r="3" fill="white" opacity="0.85"/>
+    </g>
+
+    <!-- Nose -->
+    <polygon points="340,244 335,252 345,252" fill="#ED93B1"/>
+    <!-- Mouth -->
+    <path d="M 335 252 Q 333 260 328 261" fill="none" stroke="#AFA9EC" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 345 252 Q 347 260 352 261" fill="none" stroke="#AFA9EC" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Whiskers -->
+    <line x1="260" y1="248" x2="325" y2="252" stroke="#7F77DD" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+    <line x1="258" y1="256" x2="324" y2="256" stroke="#7F77DD" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+    <line x1="260" y1="264" x2="325" y2="260" stroke="#7F77DD" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+    <line x1="420" y1="248" x2="355" y2="252" stroke="#7F77DD" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+    <line x1="422" y1="256" x2="356" y2="256" stroke="#7F77DD" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+    <line x1="420" y1="264" x2="355" y2="260" stroke="#7F77DD" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+
+    <!-- Forehead stripe -->
+    <path d="M 332 174 Q 336 185 340 190 Q 344 185 348 174" fill="none" stroke="#AFA9EC" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+
+  </g>
+
+  <!-- Title text -->
+  <text x="340" y="50" text-anchor="middle" font-family="Georgia, serif" font-size="34" font-weight="700" fill="#3C3489" letter-spacing="2">🐱 Meeow</text>
+  <text x="340" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="15" font-style="italic" fill="#7F77DD" opacity="0.9">A desktop cat companion that lives on your screen</text>
+
+  <!-- Bottom tagline -->
+  <text x="340" y="395" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#888780" font-style="italic">Made with 🐾 — No subscriptions. No installs. Just a cat.</text>
+
+</svg>
